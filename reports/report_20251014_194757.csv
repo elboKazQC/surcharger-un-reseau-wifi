@@ -1,0 +1,2 @@
+timestamp_start,tier_name,protocol,target_mbps,achieved_mbps,latency_ms_avg,jitter_ms,packet_loss_pct,cpu_pct_avg,mem_pct_avg
+2025-10-14T19:47:57.705283,Niveau 7 - Très Intense,TCP,60.00,0.00,3.25,0.83,0.00,12.62,36.97

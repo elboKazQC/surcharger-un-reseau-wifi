@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wifi-loadtester"
+version = "0.1.0"
+description = "Outil Python pour surcharger un réseau WiFi de façon contrôlée et mesurer les impacts sur des AMR."
+readme = "README.md"
+authors = [ { name = "Projet AMR" } ]
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "psutil>=5.9",
+    "PyYAML>=6.0",
+    "rich>=13.0"
+]
+
+[project.scripts]
+loadtester = "loadtester.cli:main"
+loadtester-gui = "loadtester.gui:main"
+loadtester-stress = "loadtester.stress:main"
+loadtester-receiver = "loadtester.receiver:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

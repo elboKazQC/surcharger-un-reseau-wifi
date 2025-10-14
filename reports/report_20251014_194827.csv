@@ -1,0 +1,2 @@
+timestamp_start,tier_name,protocol,target_mbps,achieved_mbps,latency_ms_avg,jitter_ms,packet_loss_pct,cpu_pct_avg,mem_pct_avg
+2025-10-14T19:48:27.473898,Niveau 8 - Extrême,UDP,80.00,43.68,23.50,10.31,0.00,14.30,36.91

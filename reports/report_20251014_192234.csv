@@ -1,0 +1,2 @@
+timestamp_start,tier_name,protocol,target_mbps,achieved_mbps,latency_ms_avg,jitter_ms,packet_loss_pct,cpu_pct_avg,mem_pct_avg
+2025-10-14T19:22:34.272222,Niveau 5 - Élevé,TCP,40.00,0.00,5.25,2.28,0.00,5.69,36.50

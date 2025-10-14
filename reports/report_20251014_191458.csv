@@ -1,0 +1,2 @@
+timestamp_start,tier_name,protocol,target_mbps,achieved_mbps,latency_ms_avg,jitter_ms,packet_loss_pct,cpu_pct_avg,mem_pct_avg
+2025-10-14T19:14:58.472499,Niveau 2 - Faible,UDP,10.00,5.48,11.25,8.29,0.00,22.19,40.11

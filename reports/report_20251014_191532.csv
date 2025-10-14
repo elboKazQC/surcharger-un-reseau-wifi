@@ -1,0 +1,2 @@
+timestamp_start,tier_name,protocol,target_mbps,achieved_mbps,latency_ms_avg,jitter_ms,packet_loss_pct,cpu_pct_avg,mem_pct_avg
+2025-10-14T19:15:32.381512,Niveau 3 - Modéré,TCP,20.00,0.00,4.00,1.87,0.00,14.33,40.29

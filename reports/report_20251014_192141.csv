@@ -1,0 +1,2 @@
+timestamp_start,tier_name,protocol,target_mbps,achieved_mbps,latency_ms_avg,jitter_ms,packet_loss_pct,cpu_pct_avg,mem_pct_avg
+2025-10-14T19:21:41.653349,Niveau 4 - Moyen,UDP,30.00,17.06,9.50,5.02,0.00,14.91,36.60

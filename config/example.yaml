@@ -1,0 +1,20 @@
+global:
+  target_host: 127.0.0.1
+  ping_host: 127.0.0.1
+  safety_max_mbps: 100
+  output_dir: reports
+  use_iperf_if_available: true
+
+tiers:
+  - name: palier_demo_udp
+    protocol: UDP
+    target_bandwidth_mbps: 5
+    connections: 2
+    duration_s: 5
+    packet_size: 512
+  - name: palier_demo_tcp
+    protocol: TCP
+    target_bandwidth_mbps: 10
+    connections: 2
+    duration_s: 5
+    packet_size: 1024

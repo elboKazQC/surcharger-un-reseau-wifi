@@ -1,0 +1,2 @@
+timestamp_start,tier_name,protocol,target_mbps,achieved_mbps,latency_ms_avg,jitter_ms,packet_loss_pct,cpu_pct_avg,mem_pct_avg
+2025-10-14T19:40:49.927340,Niveau 10 - Maximum,UDP,120.00,63.92,37.75,13.55,0.00,14.87,37.87

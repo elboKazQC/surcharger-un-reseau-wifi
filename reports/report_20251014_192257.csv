@@ -1,0 +1,2 @@
+timestamp_start,tier_name,protocol,target_mbps,achieved_mbps,latency_ms_avg,jitter_ms,packet_loss_pct,cpu_pct_avg,mem_pct_avg
+2025-10-14T19:22:57.623461,Niveau 6 - Intense,UDP,50.00,28.09,20.75,5.49,0.00,14.56,36.50

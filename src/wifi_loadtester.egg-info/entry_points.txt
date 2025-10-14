@@ -1,0 +1,5 @@
+[console_scripts]
+loadtester = loadtester.cli:main
+loadtester-gui = loadtester.gui:main
+loadtester-receiver = loadtester.receiver:main
+loadtester-stress = loadtester.stress:main

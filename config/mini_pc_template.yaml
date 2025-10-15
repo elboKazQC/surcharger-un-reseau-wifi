@@ -1,0 +1,31 @@
+# Configuration exemple pour le Mini PC (Récepteur)
+# Ce fichier est un TEMPLATE - Copiez-le vers mini_pc_local.yaml et modifiez selon vos besoins
+# 
+# Commande : cp config/mini_pc_template.yaml config/mini_pc_local.yaml
+# (le fichier *_local.yaml sera automatiquement ignoré par git)
+
+receiver:
+  # Ports d'écoute
+  udp_port: 5202
+  tcp_port: 5201
+  
+  # Interface d'écoute (0.0.0.0 = toutes les interfaces)
+  listen_ip: "0.0.0.0"
+  
+  # Intervalle d'affichage des stats (secondes)
+  interval: 5
+  
+  # Fichier de sortie (sera ignoré par git)
+  output_file: "receiver_log.csv"
+
+notes:
+  # REMPLACER PAR VOTRE IP RÉELLE
+  # Obtenir avec : ipconfig (Windows) ou ip addr (Linux)
+  mini_pc_ip: "192.168.X.X"
+  
+  # Cette IP doit être utilisée comme target_host sur le PC émetteur
+  usage: |
+    Sur le PC émetteur, dans config/pc_principal_local.yaml :
+    global:
+      target_host: 192.168.X.X  # IP de ce Mini PC
+      ping_host: 192.168.X.X

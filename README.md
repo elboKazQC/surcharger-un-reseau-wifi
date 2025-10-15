@@ -16,6 +16,74 @@ Ce projet fournit un utilitaire en ligne de commande pour générer une charge r
 pip install -e .
 ```
 
+## 🖥️ Configuration Multi-PC (Émetteur/Récepteur)
+
+### Architecture Typique
+
+**PC Principal (Émetteur)** → Génère du trafic → **Mini PC (Récepteur)** → Mesure réception
+
+### Sur le Mini PC (Récepteur)
+
+1. Installer le projet :
+   ```bash
+   pip install -e .
+   ```
+
+2. Créer un fichier de config locale : `config/mini_pc_local.yaml`
+   ```yaml
+   # Ce fichier est ignoré par git (.gitignore)
+   receiver:
+     udp_port: 5202
+     tcp_port: 5201
+     listen_ip: "0.0.0.0"  # Écoute sur toutes les interfaces
+   ```
+
+3. Démarrer le récepteur :
+   ```bash
+   loadtester-receiver --udp-port 5202 --tcp-port 5201 --interval 5 --output receiver_log.csv
+   ```
+   
+   **Note importante** : Les fichiers `receiver_*.csv` sont automatiquement ignorés par git.
+
+### Sur le PC Principal (Émetteur)
+
+1. Créer votre config locale : `config/pc_principal_local.yaml`
+   ```yaml
+   # Ce fichier est ignoré par git (.gitignore)
+   global:
+     target_host: 192.168.X.X  # IP du Mini PC
+     ping_host: 192.168.X.X
+     safety_max_mbps: 150
+     output_dir: reports
+     use_iperf_if_available: true
+   
+   tiers:
+     - name: palier1
+       protocol: UDP
+       target_bandwidth_mbps: 10
+       connections: 2
+       duration_s: 20
+       packet_size: 512
+   ```
+
+2. Lancer les tests :
+   ```bash
+   loadtester --config config/pc_principal_local.yaml
+   # ou
+   loadtester-gui
+   ```
+
+### 🔒 Fichiers Protégés (non-commitables)
+
+Ces fichiers sont automatiquement ignorés par git :
+- `config/*_local.yaml` - Vos configs spécifiques à chaque PC
+- `config/mini_pc.yaml` - Config du mini PC
+- `config/pc_principal.yaml` - Config du PC principal
+- `receiver_*.csv` - Logs de réception
+- `*_local.csv` - Tous les CSV locaux
+
+Le fichier `config/example.yaml` reste commitable comme référence.
+
 ## Configuration
 
 Créer un fichier YAML (ex: `config/example.yaml`):

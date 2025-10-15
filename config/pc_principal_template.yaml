@@ -1,0 +1,62 @@
+# Configuration exemple pour le PC Principal (Émetteur)
+# Ce fichier est un TEMPLATE - Copiez-le vers pc_principal_local.yaml et modifiez selon vos besoins
+#
+# Commande : cp config/pc_principal_template.yaml config/pc_principal_local.yaml
+# (le fichier *_local.yaml sera automatiquement ignoré par git)
+
+global:
+  # REMPLACER PAR L'IP DU MINI PC (récepteur)
+  target_host: 192.168.X.X
+  ping_host: 192.168.X.X
+  
+  # Plafond de sécurité (Mbps)
+  safety_max_mbps: 150
+  
+  # Dossier de sortie des rapports
+  output_dir: reports
+  
+  # Utiliser iperf3 si disponible
+  use_iperf_if_available: true
+
+tiers:
+  # Palier de test simple pour vérifier la connectivité
+  - name: test_connexion
+    protocol: UDP
+    target_bandwidth_mbps: 5
+    connections: 1
+    duration_s: 10
+    packet_size: 512
+  
+  # Palier léger
+  - name: palier1_leger
+    protocol: UDP
+    target_bandwidth_mbps: 10
+    connections: 2
+    duration_s: 20
+    packet_size: 512
+  
+  # Palier moyen
+  - name: palier2_moyen
+    protocol: UDP
+    target_bandwidth_mbps: 30
+    connections: 4
+    duration_s: 30
+    packet_size: 1024
+  
+  # Palier intensif TCP
+  - name: palier3_intensif
+    protocol: TCP
+    target_bandwidth_mbps: 50
+    connections: 4
+    duration_s: 40
+    packet_size: 1024
+
+notes:
+  usage: |
+    1. Sur le Mini PC, démarrer le récepteur :
+       loadtester-receiver --udp-port 5202 --tcp-port 5201 --interval 5 --output receiver_log.csv
+    
+    2. Sur ce PC, lancer les tests :
+       loadtester --config config/pc_principal_local.yaml
+       # ou
+       loadtester-gui

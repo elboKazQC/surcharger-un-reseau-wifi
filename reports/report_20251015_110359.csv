@@ -1,0 +1,2 @@
+timestamp_start,tier_name,protocol,target_mbps,achieved_mbps,latency_ms_avg,jitter_ms,packet_loss_pct,cpu_pct_avg,mem_pct_avg
+2025-10-15T11:03:59.227384,Niveau 1 - Léger,UDP,5.00,2.48,2.50,0.87,0.00,38.40,22.87

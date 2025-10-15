@@ -1,5 +1,49 @@
 # Outil de surcharge réseau WiFi pour tests AMR
 
+## 🚀 Connexion à ce Mini PC (Récepteur)
+
+**Mini PC prêt à recevoir du trafic !**
+
+- **Adresse IP WiFi du Mini PC** : `10.136.136.137`
+- **Adresse IP Ethernet (si besoin)** : `10.10.249.20`
+- **Ports ouverts** :
+    - UDP : `5202`
+    - TCP : `5201`
+- **Commande pour démarrer le récepteur** :
+    ```powershell
+    .\.venv\Scripts\Activate.ps1
+    loadtester-receiver --udp-port 5202 --tcp-port 5201 --interval 5 --output receiver_log.csv
+    ```
+- **Fichier de log généré** : `receiver_log.csv` (protégé par .gitignore)
+- **Firewall à ouvrir sur le Mini PC** (si besoin, en administrateur) :
+    ```powershell
+    New-NetFirewallRule -DisplayName "LoadTester UDP" -Direction Inbound -Protocol UDP -LocalPort 5202 -Action Allow
+    New-NetFirewallRule -DisplayName "LoadTester TCP" -Direction Inbound -Protocol TCP -LocalPort 5201 -Action Allow
+    ```
+- **Tester la connexion depuis l'autre PC** :
+    ```powershell
+    ping 10.136.136.137
+    Test-NetConnection -ComputerName 10.136.136.137 -Port 5202
+    ```
+- **Exemple de config sur l'autre PC** :
+    ```yaml
+    global:
+      target_host: 10.136.136.137  # IP du Mini PC
+      ping_host: 10.136.136.137
+      safety_max_mbps: 150
+      output_dir: reports
+      use_iperf_if_available: true
+    tiers:
+      - name: test_connexion
+        protocol: UDP
+        target_bandwidth_mbps: 5
+        connections: 1
+        duration_s: 10
+        packet_size: 512
+    ```
+
+---
+
 Ce projet fournit un utilitaire en ligne de commande pour générer une charge réseau graduelle (paliers) et mesurer différents indicateurs: latence, gigue, perte de paquets (UDP), débit réel, ressources CPU/RAM locales.
 
 ## Objectifs
